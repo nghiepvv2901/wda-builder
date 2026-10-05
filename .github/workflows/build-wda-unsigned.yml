@@ -54,6 +54,8 @@ jobs:
           if [ -d "$APP/Frameworks" ]; then
             find "$APP/Frameworks" -name 'XC*' -prune -exec rm -rf {} +
           fi
+          find "$APP" -type d -name '*.dSYM' -prune -exec rm -rf {} +
+          find "$APP" -type f -name '*.dSYM' -delete
           mkdir -p Payload
           cp -r "$APP" Payload/
           zip -r WDA-unsigned.ipa Payload
